@@ -1,9 +1,12 @@
 <script>
-  let name = "Yoshi";
-  let beltColor = "black";
+  let people = [
+    { name: "yoshi", beltColor: "black", age: 25, id: 1 },
+    { name: "mario", beltColor: "orange", age: 45, id: 2 },
+    { name: "luigi", beltColor: "brown", age: 33, id: 3 }
+  ];
 
-  const handleClick = () => {
-    beltColor = "orange";
+  const handleClick = personId => {
+    people = people.filter(person => person.id !== personId);
   };
 </script>
 
@@ -15,13 +18,6 @@
     margin: 0 auto;
   }
 
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
-  }
-
   @media (min-width: 640px) {
     main {
       max-width: none;
@@ -30,7 +26,16 @@
 </style>
 
 <main>
-  <h1>Hello {name}!</h1>
-  <p>{beltColor} belt</p>
-  <button on:click={handleClick}>Update belt color</button>
+  <h1>People</h1>
+  <div>
+    {#each people as person (person.id)}
+      <div>
+        <h4>{person.name}</h4>
+        <p>{person.age} years old, {person.beltColor} belt.</p>
+        <button on:click={() => handleClick(person.id)}>delete</button>
+      </div>
+    {:else}
+      <p>There are no people to show...</p>
+    {/each}
+  </div>
 </main>
