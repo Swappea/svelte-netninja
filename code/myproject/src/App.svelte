@@ -30,7 +30,7 @@
 
 <!-- {#if num > 20}ds sdds{:else if num > 5}ab sdsdds{:else}sdsdsdsd sdsdds{/if} -->
 
-<Modal />
+<Modal message="Sign up for offers!" isPromo={true} />
 <main>
   <h1>People</h1>
   <div>
