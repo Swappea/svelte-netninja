@@ -6,6 +6,12 @@
     { name: "luigi", beltColor: "brown", age: 33, id: 3 }
   ];
 
+  let showModal = false;
+
+  const toggleModal = () => {
+    showModal = !showModal;
+  };
+
   const handleClick = personId => {
     people = people.filter(person => person.id !== personId);
   };
@@ -30,8 +36,13 @@
 
 <!-- {#if num > 20}ds sdds{:else if num > 5}ab sdsdds{:else}sdsdsdsd sdsdds{/if} -->
 
-<Modal message="Sign up for offers!" isPromo={true} />
+<Modal
+  message="Sign up for offers!"
+  isPromo={true}
+  {showModal}
+  on:click={toggleModal} />
 <main>
+  <button on:click={toggleModal}>Open Modal</button>
   <h1>People</h1>
   <div>
     {#each people as person (person.id)}
