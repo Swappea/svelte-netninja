@@ -35,3 +35,6 @@
     {:else}
       <p>There are no people to show...</p>
     {/each}
+
+* Slots
+  * to pass content as html
